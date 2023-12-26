@@ -3,21 +3,21 @@ services:
   - docker
 
 before_install:
-  - docker build -t minhlq/react-test -f ./client/Dockerfile.dev ./client
+  - docker build -t minhle1456/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run -e CI=true minhlq/react-test npm test -- --coverage
+  - docker run -e CI=true minhle1456/react-test npm test -- --coverage
 
 after_success:
-  - docker build -t minhlq/multi-client ./client
-  - docker build -t minhlq/multi-nginx ./nginx
-  - docker build -t minhlq/multi-server ./server
-  - docker build -t minhlq/multi-worker ./worker
+  - docker build -t minhle1456/multi-client ./client
+  - docker build -t minhle1456/multi-nginx ./nginx
+  - docker build -t minhle1456/multi-server ./server
+  - docker build -t minhle1456/multi-worker ./worker
   # Log in to docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
 
   # Take those image and push to docker hub
-  - docker push minhlq/multi-client
-  - docker push minhlq/multi-nginx
-  - docker push minhlq/multi-server
-  - docker push minhlq/multi-worker
+  - docker push minhle1456/multi-client
+  - docker push minhle1456/multi-nginx
+  - docker push minhle1456/multi-server
+  - docker push minhle1456/multi-worker
